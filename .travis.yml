@@ -4,4 +4,4 @@ jdk:
 - oraclejdk7
 - openjdk6
 install: /bin/true
-script: mvn test install --quiet -Dgpg.skip=true 
+script: mvn test install --quiet -Dgpg.skip=true -DskipTests=true
