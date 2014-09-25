@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sina.cloudstorage</groupId>
+		<artifactId>SinaStorage-SDK-Java-pom</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>scs-android-sdk</artifactId>
+	<name>scs-android-sdk</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>[4.2, 4.2.5)</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>[4.2, 4.2.5)</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sina.cloudstorage</groupId>
+			<artifactId>scs-java-sdk-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sina.cloudstorage</groupId>
+			<artifactId>scs-java-sdk</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+  </dependencies>
+	
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+				<source>1.6</source>
+				<target>1.6</target>
+				<encoding>UTF-8</encoding>
+				</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>jarjar-maven-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>jarjar</goal>
+						</goals>
+						<configuration>
+							<includes>
+								<include>com.sina.cloudstorage:scs-java-sdk-core</include>
+								<include>com.sina.cloudstorage:scs-java-sdk</include>
+								<include>org.apache.httpcomponents:httpclient</include>
+								<include>org.apache.httpcomponents:httpcore</include>
+							</includes>
+							<rules>
+								<rule>
+									<pattern>org.apache.http.**</pattern>
+									<result>com.sina.org.apache.http.@1</result>
+								</rule>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

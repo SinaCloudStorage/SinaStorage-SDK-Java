@@ -1,0 +1,33 @@
+<assembly>
+	<id>bin</id>
+	<formats>
+		<format>jar</format>
+	</formats>
+	
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<moduleSets>
+		<moduleSet>
+			<useAllReactorProjects>true</useAllReactorProjects>
+			<includes>
+				<include>com.sina.cloudstorage:scs-java-sdk-core</include>
+				<include>com.sina.cloudstorage:scs-java-sdk</include>
+			</includes>
+			<binaries>
+				<outputDirectory>/</outputDirectory>
+				<unpack>true</unpack>
+				<includeDependencies>false</includeDependencies>
+				<!-- <dependencySets>
+					<dependencySet>
+						<outputDirectory>${artifactId}/third-part</outputDirectory>
+						<useProjectArtifact>true</useProjectArtifact>
+						<unpack>false</unpack>
+						<scope>runtime</scope>
+						<excludes>
+							<exclude>com.sina.cloudstorage:scs-java-sdk-core</exclude>
+						</excludes>
+					</dependencySet>
+				</dependencySets> -->
+			</binaries>
+		</moduleSet>
+	</moduleSets>
+</assembly>
