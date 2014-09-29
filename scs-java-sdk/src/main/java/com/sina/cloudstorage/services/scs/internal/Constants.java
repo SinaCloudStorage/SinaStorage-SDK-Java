@@ -23,10 +23,11 @@ public class Constants {
     public static String S3_HOSTNAME = "sinacloud.net";
     
     /** Default hostname for the SCS upload endpoint */
-    public static String S3_UPLOAD_HOSTNAME = "up.sinacloud.net";//up.sinacloud.net
+    public static String S3_UPLOAD_HOSTNAME = "sinacloud.net";//"up.sinacloud.net";
     
-    /** Default hostname for the SCS download endpoint */
-    public static String S3_DOWNLOAD_HOSTNAME = "cdn.sinacloud.net";//cdn.sinacloud.net
+    //暂时取消支持
+//    /** Default hostname for the SCS download endpoint */
+//    public static String S3_DOWNLOAD_HOSTNAME = "cdn.sinacloud.net";//cdn.sinacloud.net
 
     /** Service name for Amazon S3 */
     public static String S3_SERVICE_NAME = "SCS";
