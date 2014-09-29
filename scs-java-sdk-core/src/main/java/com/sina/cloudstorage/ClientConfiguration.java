@@ -62,7 +62,7 @@ public class ClientConfiguration {
      * The default configuration is to use HTTPS for all requests for increased
      * security.
      */
-    private Protocol protocol = Protocol.HTTP;//Protocol.HTTPS;//
+    private Protocol protocol = Protocol.HTTPS;//Protocol.HTTP;//
 
     /** Optionally specifies the proxy host to connect through. */
     private String proxyHost = null;
