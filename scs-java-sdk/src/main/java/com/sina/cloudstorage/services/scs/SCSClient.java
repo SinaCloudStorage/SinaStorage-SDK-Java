@@ -32,6 +32,7 @@ import java.util.Map.Entry;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.http.client.utils.URIBuilder;
 
 import com.sina.cloudstorage.ClientConfiguration;
 import com.sina.cloudstorage.DefaultRequest;
@@ -317,7 +318,7 @@ public class SCSClient extends SCSWebServiceClient implements SCS {
 
         setEndpoint(Constants.S3_HOSTNAME);
         setEndpoint4Upload(Constants.S3_UPLOAD_HOSTNAME);
-        setEndpoint4Download(Constants.S3_DOWNLOAD_HOSTNAME);
+//        setEndpoint4Download(Constants.S3_DOWNLOAD_HOSTNAME);
     }
 
     /**
@@ -1247,8 +1248,8 @@ public class SCSClient extends SCSWebServiceClient implements SCS {
         String bucketName = generatePresignedUrlRequest.getBucketName();
         String key = generatePresignedUrlRequest.getKey();
 
-        assertParameterNotNull(bucketName,
-            "The bucket name parameter must be specified when generating a pre-signed URL");
+//        assertParameterNotNull(bucketName,
+//            "The bucket name parameter must be specified when generating a pre-signed URL");
         assertParameterNotNull(generatePresignedUrlRequest.getMethod(),
             "The HTTP method request parameter must be specified when generating a pre-signed URL");
 
@@ -1973,6 +1974,7 @@ public class SCSClient extends SCSWebServiceClient implements SCS {
      */
     public URL getUrl(String bucketName, String key) {
         Request<?> request = new DefaultRequest<Object>(Constants.S3_SERVICE_NAME);
+        request.setHttpMethod(HttpMethodName.GET);
         configRequest(request, bucketName, key);
         return ServiceUtils.convertRequestToUrl(request);
     }
@@ -2020,9 +2022,9 @@ public class SCSClient extends SCSWebServiceClient implements SCS {
     	//上传、分片上传域名用endpoint4Upload
     	if (request.getOriginalRequest() instanceof PutObjectRequest || request.getOriginalRequest() instanceof UploadPartRequest) {
 			theEndpoint = endpoint4Upload;
-		}else if (request.getOriginalRequest() instanceof GetObjectRequest){
-			//下载域名用endpoint4Download
-			theEndpoint = endpoint4Download;
+//		}else if (request.getOriginalRequest() instanceof GetObjectRequest){
+//			//下载域名用endpoint4Download
+//			theEndpoint = endpoint4Download;
 		}else if (request.getOriginalRequest() instanceof GeneratePresignedUrlRequest){
 			//生成url的request，若isBucketNameAsDomain为true，则域名使用bucket name
 			GeneratePresignedUrlRequest generatePresignedUrlRequest = (GeneratePresignedUrlRequest)request.getOriginalRequest();
@@ -2049,6 +2051,18 @@ public class SCSClient extends SCSWebServiceClient implements SCS {
 		}else{
 			theEndpoint = endpoint;
 		}
+
+    	//http method 是GET时，不适用https方式请求
+    	if (request.getHttpMethod() == HttpMethodName.GET && "https".equalsIgnoreCase(theEndpoint.getScheme())){
+    		URIBuilder ub = new URIBuilder(theEndpoint);
+    		ub.setScheme("http");
+    		
+    		try {
+				theEndpoint = ub.build();
+			} catch (URISyntaxException e) {
+				throw new IllegalArgumentException(e);
+			}
+    	}
     	
     	if ( !clientOptions.isPathStyleAccess()
              && BucketNameUtils.isDNSBucketName(bucketName)
