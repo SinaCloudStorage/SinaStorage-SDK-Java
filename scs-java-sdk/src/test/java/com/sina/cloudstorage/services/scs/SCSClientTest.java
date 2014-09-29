@@ -365,7 +365,7 @@ public class SCSClientTest extends TestCase {
 		
 		try{
 			AccessControlList acl = client.getObjectAcl(bucketName, objectKey);
-			System.out.println(acl);
+//			System.out.println(acl);
 			Assert.assertNotNull("object:"+objectKey+" acl is null", acl);
 			Assert.assertTrue("object:"+objectKey+" acl's grants is empty", acl.getGrants().size() > 0);
 		} catch (SCSServiceException e){
@@ -1876,6 +1876,7 @@ public class SCSClientTest extends TestCase {
 		} catch (MalformedURLException e1) {
 			Assert.fail("failed to parse urlStr to URL");
 		}
+		
 		/*
 		 * 获取url内容
 		 */
@@ -1885,7 +1886,6 @@ public class SCSClientTest extends TestCase {
 			int contentLength = urlConnection.getContentLength();
 			if (contentLength != 587){
 				System.out.println(urlConnection.getContent());
-				
 				Assert.assertEquals("the generated url is invalid", 587, contentLength);
 			}
 		} catch (IOException e) {
