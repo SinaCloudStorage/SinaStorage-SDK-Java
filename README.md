@@ -414,7 +414,7 @@
 	        epochMillis += 60*5*1000;
 	        expiration = new Date(epochMillis);   
 	        
-			URL presignedUrl = conn.generatePresignedUrl("bucket名称", "文件路径", expiration);
+			URL presignedUrl = conn.generatePresignedUrl("bucket名称", "文件路径", expiration, false);
 			System.out.println(presignedUrl);
 		}
 	
