@@ -41,8 +41,8 @@ public abstract class SCSWebServiceClient {
     
     /** CDN上传加速域名 */
     protected URI endpoint4Upload;
-    /** CDN下载加速域名 */
-    protected URI endpoint4Download;
+//    /** CDN下载加速域名 */
+//    protected URI endpoint4Download;
 
     /** The client configuration */
     protected ClientConfiguration clientConfiguration;
@@ -110,9 +110,9 @@ public abstract class SCSWebServiceClient {
 		this.endpoint4Upload = configEndpoint(endpoint);
 	}
     
-	public void setEndpoint4Download(String endpoint) throws IllegalArgumentException {
-		this.endpoint4Download = configEndpoint(endpoint);
-	}
+//	public void setEndpoint4Download(String endpoint) throws IllegalArgumentException {
+//		this.endpoint4Download = configEndpoint(endpoint);
+//	}
 	
     /** Sets and returns the endpoint as a URI. */
     private URI configEndpoint(String endpoint) throws IllegalArgumentException {
