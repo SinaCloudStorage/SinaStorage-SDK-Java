@@ -27,6 +27,7 @@
   	<module>scs-java-sdk</module>
   	<module>scs-java-sdk-distribution</module>
   	<module>scs-android-sdk</module>
+  	<module>scs-java-cli</module>
   </modules>
   
   <build>
