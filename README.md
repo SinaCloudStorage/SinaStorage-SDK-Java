@@ -14,6 +14,18 @@
 - commons-logging-1.1.1
 - httpclient-4.2
 
+##目录说明
+项目由**Maven**构建而成，每个子目录作为一个子项目存在。同步项目源码后，可以在本地通过‘mvn package’命令对项目进行编译、打包。
+
+子目录						|说明
+---------------------------|--------------------------
+**scs-java-sdk-core**		|SCS JAVA SDK核心库
+**scs-java-sdk**			|SDK主要业务实现
+scs-android-sdk				|用于生成Android SDK jar包
+scs-java-cli				|CLI命令工具
+cs-java-sdk-distribution	|用于生成java sdk jar包
+
+
 ##快速上手
 
 ###1.创建bucket访问对象：
