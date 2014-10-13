@@ -49,7 +49,7 @@ public class GeneratePresignedUrlRequest extends SCSWebServiceRequest {
 
     /** The optional Content-Type header that will be sent when the presigned URL is accessed */
     private String contentType;
-
+    
     /**
      * An optional expiration date at which point the generated pre-signed URL
      * will no longer be accepted by Amazon S3. If not specified, a default
@@ -375,6 +375,5 @@ public class GeneratePresignedUrlRequest extends SCSWebServiceRequest {
 	public void setBucketNameAsDomain(boolean bucketNameAsDomain) {
 		this.bucketNameAsDomain = bucketNameAsDomain;
 	}
-    
     
 }

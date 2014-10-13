@@ -1276,7 +1276,7 @@ public class SCSClient extends SCSWebServiceClient implements SCS {
         }
 
         addResponseHeaderParameters(request, generatePresignedUrlRequest.getResponseHeaders());
-
+        
         presignRequest(request, generatePresignedUrlRequest.getMethod(),
                 bucketName, key, generatePresignedUrlRequest.getExpiration(), null);
 
