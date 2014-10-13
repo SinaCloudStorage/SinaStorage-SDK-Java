@@ -9,11 +9,14 @@ SCS-JAVA-CLI
 
 ### 调用示例 & 命令行工具
 
+```
 # 设置环境变量:
+
 $ export S3_ACCESS_KEY_ID="您的access key"
 $ export S3_SECRET_ACCESS_KEY="您的secret key"
 
 # 使用命令行:
+
 $ java -Dfile.encoding=utf-8 -jar ./SCS-JAVA-CLI.jar -help
 
 This is a program for performing single requests to Sina Cloud Storage.
