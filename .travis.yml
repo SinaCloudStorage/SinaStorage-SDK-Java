@@ -4,4 +4,7 @@ jdk:
 - oraclejdk7
 - openjdk6
 install: /bin/true
-script: mvn test install --quiet -Dgpg.skip=true -DskipTests=true
+#script: mvn test install --quiet -Dgpg.skip=true -DskipTests=true
+script: mvn test install --quiet -Dgpg.skip=true
+env:
+  - S3_ACCESS_KEY_ID=sandbox0000000000001 S3_SECRET_ACCESS_KEY=bf71cc799349ea62df7e849091c2ea5258782211
