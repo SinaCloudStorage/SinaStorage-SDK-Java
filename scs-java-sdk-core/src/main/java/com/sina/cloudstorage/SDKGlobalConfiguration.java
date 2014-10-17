@@ -19,9 +19,9 @@ public class SDKGlobalConfiguration {
 	 */
 	public static final String DEFAULT_METRICS_SYSTEM_PROPERTY = "com.amazonaws.sdk.enableDefaultMetrics";
 	/** System property name for the AWS access key ID */
-	public static final String ACCESS_KEY_SYSTEM_PROPERTY = "aws.accessKeyId";
+	public static final String ACCESS_KEY_SYSTEM_PROPERTY = "S3_ACCESS_KEY_ID";
 	/** System property name for the AWS secret key */
-	public static final String SECRET_KEY_SYSTEM_PROPERTY = "aws.secretKey";
+	public static final String SECRET_KEY_SYSTEM_PROPERTY = "S3_SECRET_ACCESS_KEY";
 	/**
 	 * System property for overriding the Amazon EC2 Instance Metadata Service
 	 * endpoint.
