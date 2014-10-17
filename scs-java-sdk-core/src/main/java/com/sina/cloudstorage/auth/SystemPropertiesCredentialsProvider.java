@@ -27,11 +27,11 @@ import com.sina.cloudstorage.SCSClientException;
 public class SystemPropertiesCredentialsProvider implements AWSCredentialsProvider {
 
     public AWSCredentials getCredentials() {
-        if (System.getProperty(ACCESS_KEY_SYSTEM_PROPERTY) != null &&
-            System.getProperty(SECRET_KEY_SYSTEM_PROPERTY) != null) {
+        if (System.getenv(ACCESS_KEY_SYSTEM_PROPERTY) != null &&
+            System.getenv(SECRET_KEY_SYSTEM_PROPERTY) != null) {
             return new BasicAWSCredentials(
-                    System.getProperty(ACCESS_KEY_SYSTEM_PROPERTY),
-                    System.getProperty(SECRET_KEY_SYSTEM_PROPERTY));
+                    System.getenv(ACCESS_KEY_SYSTEM_PROPERTY),
+                    System.getenv(SECRET_KEY_SYSTEM_PROPERTY));
         }
 
         throw new SCSClientException(
