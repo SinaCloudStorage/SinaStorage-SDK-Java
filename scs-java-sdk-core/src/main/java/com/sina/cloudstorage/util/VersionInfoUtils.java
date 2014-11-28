@@ -124,7 +124,7 @@ public class VersionInfoUtils {
     private static void initializeUserAgent() {
         StringBuilder buffer = new StringBuilder(1024);
 
-        buffer.append("scs-android-sdk-");
+        buffer.append("scs-sdk-");
         buffer.append(VersionInfoUtils.getPlatform().toLowerCase());
         buffer.append("/");
 

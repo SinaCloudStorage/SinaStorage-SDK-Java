@@ -122,7 +122,10 @@ public class Grant {
         
         if ( permissions.size() != other.permissions.size() )
             return false;
-        //TODO:判断permissions内容是否相等
+        
+		// 判断permissions内容是否相等
+		if (!permissions.containsAll(other.permissions))
+			return false;
         
         return true;
     }

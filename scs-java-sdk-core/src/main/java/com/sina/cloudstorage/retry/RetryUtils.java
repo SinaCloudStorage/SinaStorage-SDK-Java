@@ -65,7 +65,8 @@ public class RetryUtils {
         if (ase == null) return false;
 
         String errorCode = ase.getErrorCode();
-        return "RequestTimeTooSkewed".equals(errorCode)
+        return "ExpiredToken".equalsIgnoreCase(errorCode)
+				|| "RequestTimeTooSkewed".equals(errorCode)
                 || "RequestExpired".equals(errorCode)
                 || "InvalidSignatureException".equals(errorCode)
                 || "SignatureDoesNotMatch".equals(errorCode);

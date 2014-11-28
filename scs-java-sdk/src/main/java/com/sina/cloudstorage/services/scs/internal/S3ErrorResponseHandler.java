@@ -80,8 +80,8 @@ public class S3ErrorResponseHandler
         
         SCSS3Exception ase = new SCSS3Exception(buffer.toString());
         ase.setStatusCode(errorResponse.getStatusCode());
-//        ase.setErrorCode(errorCode);
-//        ase.setRequestId(requestId);
+        ase.setErrorCode(errorResponse.getHeaders().get(Headers.ERROR_CODE));
+        ase.setRequestId(errorResponse.getHeaders().get(Headers.REQUEST_ID));
 //        ase.setExtendedRequestId(extendedRequestId);
         fillInErrorType(ase, errorResponse);
 

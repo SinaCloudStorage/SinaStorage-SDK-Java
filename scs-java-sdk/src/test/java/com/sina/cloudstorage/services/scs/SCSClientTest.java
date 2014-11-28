@@ -760,7 +760,7 @@ public class SCSClientTest extends TestCase {
 		try {
 			client.putObject(bucketName, objectKey, new File(getClass().getResource(localFileName).toURI()));
 		} catch (Exception e) {
-			Assert.fail("put object failed.Error is :"+e.getMessage());
+			Assert.fail("put object failed.Error is :"+e);
 		}
 		
 		try {
@@ -959,6 +959,13 @@ public class SCSClientTest extends TestCase {
 			Assert.fail("delete bucket failed.Error is :"+e.getMessage());
 		}
 		
+		try {
+			Thread.sleep(3*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		Assert.assertFalse("bucket:"+bucketName+" is still exist", client.doesBucketExist(bucketName));
 	}
 
@@ -985,6 +992,13 @@ public class SCSClientTest extends TestCase {
 			client.deleteBucket(new DeleteBucketRequest(bucketName));
 		} catch (SCSServiceException e) {
 			Assert.fail("delete bucket failed.Error is :"+e.getMessage());
+		}
+		
+		try {
+			Thread.sleep(3*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		Assert.assertFalse("bucket:"+bucketName+" is still exist", client.doesBucketExist(bucketName));
@@ -1801,26 +1815,6 @@ public class SCSClientTest extends TestCase {
 		}
 	}
 
-//	public void testCompleteMultipartUpload() {
-//		fail("Not yet implemented");
-//	}
-//
-//	public void testInitiateMultipartUploadStringString() {
-//		fail("Not yet implemented");
-//	}
-//
-//	public void testInitiateMultipartUploadInitiateMultipartUploadRequest() {
-//		fail("Not yet implemented");
-//	}
-//
-//	public void testListParts() {
-//		fail("Not yet implemented");
-//	}
-//
-//	public void testUploadPart() {
-//		fail("Not yet implemented");
-//	}
-
 	public void testGetResourceUrl() {
 		/*
 		 * 创建bucket
@@ -1875,6 +1869,13 @@ public class SCSClientTest extends TestCase {
 			url = new URL(urlStr);
 		} catch (MalformedURLException e1) {
 			Assert.fail("failed to parse urlStr to URL");
+		}
+		
+		try {
+			Thread.sleep(3*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		/*
@@ -1942,6 +1943,14 @@ public class SCSClientTest extends TestCase {
 		 */
 		URL url = client.getUrl(bucketName, objectKey);
 		Assert.assertNotNull("url is null", url);
+		
+		try {
+			Thread.sleep(3*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		/*
 		 * 获取url内容
 		 */

@@ -61,7 +61,9 @@ public interface Headers {
     public static final String S3_MFA = "x-amz-mfa";
 
     /** S3 response header for a request's AWS request ID */
-    public static final String REQUEST_ID = "x-amz-request-id";
+    public static final String REQUEST_ID = "x-requestid";//"x-amz-request-id";
+    
+    public static final String ERROR_CODE = "x-error-code";
 
     /** S3 response header for a request's extended debugging ID */
     public static final String EXTENDED_REQUEST_ID = "x-amz-id-2";
