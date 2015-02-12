@@ -39,7 +39,7 @@ public class ObjectListing {
 	 *	{
 	 *	    "Delimiter": null,
 	 *	    "Prefix": null,
-	 *	    "CommonPrefixes": [],
+	 *	    "CommonPrefixes": [{Prefix: "html/assets/"},...],
 	 *	    "Marker": null,
 	 *	    "ContentsQuantity": 10,
 	 *	    "CommonPrefixesQuantity": 0,
@@ -67,7 +67,7 @@ public class ObjectListing {
 		if(jsonMap!=null){
 			this.delimiter = (String) jsonMap.get("Delimiter");
 			this.prefix = (String) jsonMap.get("Prefix");
-			this.commonPrefixes = (List<String>) jsonMap.get("CommonPrefixes");
+			this.commonPrefixes = (List<Map<String, String>>) jsonMap.get("CommonPrefixes");
 			this.marker = (String) jsonMap.get("Marker");
 			this.contentsQuantity = ((Double) jsonMap.get("ContentsQuantity")).intValue();
 			this.commonPrefixesQuantity = ((Double) jsonMap.get("CommonPrefixesQuantity")).intValue();
@@ -102,7 +102,7 @@ public class ObjectListing {
      * A list of the common prefixes included in this object listing - common
      * prefixes will only be populated for requests that specified a delimiter
      */
-    private List<String> commonPrefixes = new ArrayList<String>();
+    private List<Map<String, String>> commonPrefixes = new ArrayList<Map<String,String>>();
     
     /** The name of the Amazon S3 bucket containing the listed objects */
     private String bucketName;
@@ -196,7 +196,7 @@ public class ObjectListing {
      * @return The list of common prefixes included in this object listing,
      *         which might be an empty list if no common prefixes were found.
      */
-    public List<String> getCommonPrefixes() {
+    public List<Map<String, String>> getCommonPrefixes() {
         return commonPrefixes;
     }
 
@@ -208,7 +208,7 @@ public class ObjectListing {
      * @param commonPrefixes
      *            The common prefixes for this object listing.
      */
-    public void setCommonPrefixes(List<String> commonPrefixes) {
+    public void setCommonPrefixes(List<Map<String, String>> commonPrefixes) {
         this.commonPrefixes = commonPrefixes;
     }
 

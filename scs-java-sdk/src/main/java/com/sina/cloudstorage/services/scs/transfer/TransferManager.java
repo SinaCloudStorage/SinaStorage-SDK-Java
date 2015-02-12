@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
@@ -641,7 +642,8 @@ public class TransferManager {
                     }
                 }
 
-                commonPrefixes.addAll(listObjectsResponse.getCommonPrefixes());
+                for(Map<String,String> cp : listObjectsResponse.getCommonPrefixes())
+                	commonPrefixes.add(cp.get("Prefix"));
             } while ( listObjectsResponse.isTruncated() );
         } while ( !commonPrefixes.isEmpty() );
 
