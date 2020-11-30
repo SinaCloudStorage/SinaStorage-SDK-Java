@@ -20,10 +20,12 @@ package com.sina.cloudstorage.services.scs.internal;
 public class Constants {
 
     /** Default hostname for the SCS service endpoint */
-    public static String S3_HOSTNAME = "sinacloud.net";
+    //public static String S3_HOSTNAME = "sinacloud.net";
+    public static String S3_HOSTNAME = "intra-d.sinastorage.com"
     
     /** Default hostname for the SCS upload endpoint */
-    public static String S3_UPLOAD_HOSTNAME = "sinacloud.net";//"up.sinacloud.net";
+    //public static String S3_UPLOAD_HOSTNAME = "sinacloud.net";//"up.sinacloud.net";
+    public static String S3_UPLOAD_HOSTNAME = "intra-d.sinastorage.com"
     
     //暂时取消支持
 //    /** Default hostname for the SCS download endpoint */
